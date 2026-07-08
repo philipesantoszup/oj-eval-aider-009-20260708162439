@@ -103,14 +103,14 @@ public:
 
 	vector& operator=(const vector& other) {
 		if (this != &other) {
+			if (other.size_val > capacity_val) {
+				reserve(other.capacity_val);
+			}
 			clear();
-			::operator delete(data);
-			size_val = other.size_val;
-			capacity_val = other.capacity_val;
-			data = static_cast<T*>(::operator new(capacity_val * sizeof(T)));
-			for (size_t i = 0; i < size_val; ++i) {
+			for (size_t i = 0; i < other.size_val; ++i) {
 				new (data + i) T(other.data[i]);
 			}
+			size_val = other.size_val;
 		}
 		return *this;
 	}

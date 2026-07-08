@@ -1,0 +1,4 @@
+for (size_t i = size_val; i > index; --i) {
+    new (data + i) T(std::move(data[i - 1]));
+    data[i - 1].~T();
+}

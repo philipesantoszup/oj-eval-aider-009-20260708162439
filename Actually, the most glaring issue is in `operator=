@@ -1,0 +1,8 @@
+vector& operator=(const vector& other) {
+    if (this != &other) {
+        clear();
+        ::operator delete(data);
+        // ... allocation ...
+    }
+    return *this;
+}
