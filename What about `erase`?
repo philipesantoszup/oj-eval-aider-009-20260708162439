@@ -1,0 +1,3 @@
+	iterator erase(iterator pos) {
+		size_t index = pos.ptr - data;
+		if (index >= size_val) throw index_out_of_bound();

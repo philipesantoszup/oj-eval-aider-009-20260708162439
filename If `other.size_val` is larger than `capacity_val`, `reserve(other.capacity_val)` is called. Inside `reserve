@@ -1,0 +1,11 @@
+	void reserve(size_t new_cap) {
+		if (new_cap <= capacity_val) return;
+		T* new_data = static_cast<T*>(::operator new(new_cap * sizeof(T)));
+		for (size_t i = 0; i < size_val; ++i) {
+			new (new_data + i) T(std::move(data[i]));
+			data[i].~T();
+		}
+		::operator delete(data);
+		data = new_data;
+		capacity_val = new_cap;
+	}

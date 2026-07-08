@@ -1,0 +1,2 @@
+		bool operator==(const const_iterator& rhs) const { return ptr == rhs.ptr; }
+		bool operator!=(const const_iterator& rhs) const { return ptr != rhs.ptr; }

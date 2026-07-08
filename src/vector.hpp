@@ -7,6 +7,7 @@
 #include <cstddef>
 #include <new>
 #include <memory>
+#include <utility>
 
 namespace sjtu
 {
@@ -126,12 +127,10 @@ public:
 	}
 
 	T& operator[](const size_t& pos) {
-		if (pos >= size_val) throw index_out_of_bound();
 		return data[pos];
 	}
 
 	const T& operator[](const size_t& pos) const {
-		if (pos >= size_val) throw index_out_of_bound();
 		return data[pos];
 	}
 

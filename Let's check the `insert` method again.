@@ -1,0 +1,16 @@
+	iterator insert(iterator pos, const T& value) {
+		size_t index = pos.ptr - data;
+		if (index > size_val) throw index_out_of_bound();
+		
+		if (size_val == capacity_val) {
+			reserve(capacity_val == 0 ? 1 : capacity_val * 2);
+		}
+
+		for (size_t i = size_val; i > index; --i) {
+			new (data + i) T(std::move(data[i - 1]));
+			data[i - 1].~T();
+		}
+		new (data + index) T(value);
+		size_val++;
+		return iterator(data + index);
+	}
